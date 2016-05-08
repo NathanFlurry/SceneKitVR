@@ -13,6 +13,11 @@
 		BF48FCA51CDC4EA700C3ECB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF48FCA31CDC4EA700C3ECB4 /* Main.storyboard */; };
 		BF48FCA71CDC4EA700C3ECB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF48FCA61CDC4EA700C3ECB4 /* Assets.xcassets */; };
 		BF48FCAA1CDC4EA700C3ECB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF48FCA81CDC4EA700C3ECB4 /* LaunchScreen.storyboard */; };
+		BF48FCB21CDC508200C3ECB4 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF48FCB11CDC508200C3ECB4 /* MainScene.swift */; };
+		BF48FCB41CDC564300C3ECB4 /* VRCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF48FCB31CDC564300C3ECB4 /* VRCamera.swift */; };
+		BF48FCB81CDC5D0A00C3ECB4 /* VRScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF48FCB71CDC5D0A00C3ECB4 /* VRScene.swift */; };
+		BF48FCBD1CDC624C00C3ECB4 /* UIView+Magic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF48FCBC1CDC624C00C3ECB4 /* UIView+Magic.swift */; };
+		BFFA42B91CDEB538007D4EAD /* VRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFA42B81CDEB538007D4EAD /* VRView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		BF48FCA61CDC4EA700C3ECB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF48FCA91CDC4EA700C3ECB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF48FCAB1CDC4EA700C3ECB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF48FCB11CDC508200C3ECB4 /* MainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
+		BF48FCB31CDC564300C3ECB4 /* VRCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VRCamera.swift; sourceTree = "<group>"; };
+		BF48FCB71CDC5D0A00C3ECB4 /* VRScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VRScene.swift; sourceTree = "<group>"; };
+		BF48FCBC1CDC624C00C3ECB4 /* UIView+Magic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Magic.swift"; sourceTree = "<group>"; };
+		BFFA42B81CDEB538007D4EAD /* VRView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VRView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,14 +67,43 @@
 			isa = PBXGroup;
 			children = (
 				BF48FC9D1CDC4EA700C3ECB4 /* AppDelegate.swift */,
-				BF48FC9F1CDC4EA700C3ECB4 /* art.scnassets */,
 				BF48FCA11CDC4EA700C3ECB4 /* GameViewController.swift */,
-				BF48FCA31CDC4EA700C3ECB4 /* Main.storyboard */,
+				BF48FCB11CDC508200C3ECB4 /* MainScene.swift */,
+				BF48FCB91CDC5D2400C3ECB4 /* VR */,
+				BF48FCBB1CDC624300C3ECB4 /* Magic */,
+				BF48FCBA1CDC5D2B00C3ECB4 /* Resources */,
+			);
+			path = VRMusicRoom;
+			sourceTree = "<group>";
+		};
+		BF48FCB91CDC5D2400C3ECB4 /* VR */ = {
+			isa = PBXGroup;
+			children = (
+				BFFA42B81CDEB538007D4EAD /* VRView.swift */,
+				BF48FCB71CDC5D0A00C3ECB4 /* VRScene.swift */,
+				BF48FCB31CDC564300C3ECB4 /* VRCamera.swift */,
+			);
+			name = VR;
+			sourceTree = "<group>";
+		};
+		BF48FCBA1CDC5D2B00C3ECB4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BF48FC9F1CDC4EA700C3ECB4 /* art.scnassets */,
 				BF48FCA61CDC4EA700C3ECB4 /* Assets.xcassets */,
+				BF48FCA31CDC4EA700C3ECB4 /* Main.storyboard */,
 				BF48FCA81CDC4EA700C3ECB4 /* LaunchScreen.storyboard */,
 				BF48FCAB1CDC4EA700C3ECB4 /* Info.plist */,
 			);
-			path = VRMusicRoom;
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		BF48FCBB1CDC624300C3ECB4 /* Magic */ = {
+			isa = PBXGroup;
+			children = (
+				BF48FCBC1CDC624C00C3ECB4 /* UIView+Magic.swift */,
+			);
+			name = Magic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,8 +178,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFFA42B91CDEB538007D4EAD /* VRView.swift in Sources */,
 				BF48FCA21CDC4EA700C3ECB4 /* GameViewController.swift in Sources */,
+				BF48FCB81CDC5D0A00C3ECB4 /* VRScene.swift in Sources */,
 				BF48FC9E1CDC4EA700C3ECB4 /* AppDelegate.swift in Sources */,
+				BF48FCBD1CDC624C00C3ECB4 /* UIView+Magic.swift in Sources */,
+				BF48FCB41CDC564300C3ECB4 /* VRCamera.swift in Sources */,
+				BF48FCB21CDC508200C3ECB4 /* MainScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +303,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nathanflurry.VRMusicRoom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -270,6 +315,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nathanflurry.VRMusicRoom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -292,6 +338,7 @@
 				BF48FCB01CDC4EA700C3ECB4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
