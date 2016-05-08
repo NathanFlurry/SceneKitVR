@@ -46,23 +46,21 @@ class VRCamera: SCNNode {
     
     var cameraLeft: SCNNode
     var cameraRight: SCNNode
-    var cameraRollNode: SCNNode
-    var cameraPitchNode: SCNNode
-    var cameraYawNode: SCNNode
+    var cameraParent: SCNNode
     
     var motionManager: CMMotionManager
     
-    init(fieldOfView fov: Double = 80, separationDistance separation: Float = 0.2) {
+    init(fieldOfView fov: Double = 120, separationDistance separation: Float = 0) {
         // Setup cameras
         cameraLeft = SCNNode()
         cameraRight = SCNNode()
         cameraLeft.camera = SCNCamera()
         cameraRight.camera = SCNCamera()
+        cameraLeft.position.x = -separation
+        cameraRight.position.x = separation
         
         // Setup transforms
-        cameraRollNode = SCNNode()
-        cameraPitchNode = SCNNode()
-        cameraYawNode = SCNNode()
+        cameraParent = SCNNode()
         
         // Setup motion manager
         motionManager = CMMotionManager()
@@ -72,11 +70,9 @@ class VRCamera: SCNNode {
         super.init()
         
         // Setup node hierarchy
-        cameraRollNode.addChildNode(cameraLeft)
-        cameraRollNode.addChildNode(cameraRight)
-        cameraPitchNode.addChildNode(cameraRollNode)
-        cameraYawNode.addChildNode(cameraPitchNode)
-        addChildNode(cameraYawNode)
+        cameraParent.addChildNode(cameraLeft)
+        cameraParent.addChildNode(cameraRight)
+        addChildNode(cameraParent)
         
         // Setup camera properties
         fieldOfView = fov
@@ -101,9 +97,11 @@ class VRCamera: SCNNode {
             }
             
             // Update the rotations
-            cameraRollNode.eulerAngles.x = Float(roll) + offset.x
-            cameraPitchNode.eulerAngles.z = Float(currentAttitude.pitch) + offset.z
-            cameraYawNode.eulerAngles.y = Float(currentAttitude.yaw) + offset.y
+            cameraParent.eulerAngles = SCNVector3(
+                Float(roll) + offset.x,
+                Float(currentAttitude.yaw) + offset.y,
+                Float(currentAttitude.pitch) + offset.z
+            )
         } else {
 //            print("There was no device motion available.")
         }

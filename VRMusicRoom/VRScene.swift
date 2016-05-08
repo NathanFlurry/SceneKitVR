@@ -10,4 +10,9 @@ import SceneKit
 
 class VRScene: SCNScene {
     final var camera: VRCamera!
+    
+    // Overide point for subclasses
+    func vrSceneReady() {
+        
+    }
 }

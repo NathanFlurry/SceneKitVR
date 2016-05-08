@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF111CB01CDF2BCA00842B7C /* bass-drum-long.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF111CA71CDF2BCA00842B7C /* bass-drum-long.mp3 */; };
+		BF111CB11CDF2BCA00842B7C /* bass-drum.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF111CA81CDF2BCA00842B7C /* bass-drum.mp3 */; };
+		BF111CB21CDF2BCA00842B7C /* cow-bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF111CA91CDF2BCA00842B7C /* cow-bell.mp3 */; };
+		BF111CB31CDF2BCA00842B7C /* crash.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF111CAA1CDF2BCA00842B7C /* crash.mp3 */; };
+		BF111CB41CDF2BCA00842B7C /* hi-hat-closed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF111CAB1CDF2BCA00842B7C /* hi-hat-closed.mp3 */; };
+		BF111CB51CDF2BCA00842B7C /* hi-hat-open.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF111CAC1CDF2BCA00842B7C /* hi-hat-open.mp3 */; };
+		BF111CB61CDF2BCA00842B7C /* ride.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF111CAD1CDF2BCA00842B7C /* ride.mp3 */; };
+		BF111CB71CDF2BCA00842B7C /* snare-drum-closed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF111CAE1CDF2BCA00842B7C /* snare-drum-closed.mp3 */; };
+		BF111CB81CDF2BCA00842B7C /* snare-drum-open.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF111CAF1CDF2BCA00842B7C /* snare-drum-open.mp3 */; };
 		BF48FC9E1CDC4EA700C3ECB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF48FC9D1CDC4EA700C3ECB4 /* AppDelegate.swift */; };
 		BF48FCA01CDC4EA700C3ECB4 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = BF48FC9F1CDC4EA700C3ECB4 /* art.scnassets */; };
 		BF48FCA21CDC4EA700C3ECB4 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF48FCA11CDC4EA700C3ECB4 /* GameViewController.swift */; };
@@ -17,10 +26,21 @@
 		BF48FCB41CDC564300C3ECB4 /* VRCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF48FCB31CDC564300C3ECB4 /* VRCamera.swift */; };
 		BF48FCB81CDC5D0A00C3ECB4 /* VRScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF48FCB71CDC5D0A00C3ECB4 /* VRScene.swift */; };
 		BF48FCBD1CDC624C00C3ECB4 /* UIView+Magic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF48FCBC1CDC624C00C3ECB4 /* UIView+Magic.swift */; };
+		BF591B9F1CDECA9F00952D7E /* OverlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF591B9E1CDECA9F00952D7E /* OverlayScene.swift */; };
+		BF591BA11CDF053900952D7E /* VRViewportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF591BA01CDF053900952D7E /* VRViewportView.swift */; };
 		BFFA42B91CDEB538007D4EAD /* VRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFA42B81CDEB538007D4EAD /* VRView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF111CA71CDF2BCA00842B7C /* bass-drum-long.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bass-drum-long.mp3"; sourceTree = "<group>"; };
+		BF111CA81CDF2BCA00842B7C /* bass-drum.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bass-drum.mp3"; sourceTree = "<group>"; };
+		BF111CA91CDF2BCA00842B7C /* cow-bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "cow-bell.mp3"; sourceTree = "<group>"; };
+		BF111CAA1CDF2BCA00842B7C /* crash.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = crash.mp3; sourceTree = "<group>"; };
+		BF111CAB1CDF2BCA00842B7C /* hi-hat-closed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "hi-hat-closed.mp3"; sourceTree = "<group>"; };
+		BF111CAC1CDF2BCA00842B7C /* hi-hat-open.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "hi-hat-open.mp3"; sourceTree = "<group>"; };
+		BF111CAD1CDF2BCA00842B7C /* ride.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ride.mp3; sourceTree = "<group>"; };
+		BF111CAE1CDF2BCA00842B7C /* snare-drum-closed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "snare-drum-closed.mp3"; sourceTree = "<group>"; };
+		BF111CAF1CDF2BCA00842B7C /* snare-drum-open.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "snare-drum-open.mp3"; sourceTree = "<group>"; };
 		BF48FC9A1CDC4EA700C3ECB4 /* VRMusicRoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VRMusicRoom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF48FC9D1CDC4EA700C3ECB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF48FC9F1CDC4EA700C3ECB4 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -33,6 +53,8 @@
 		BF48FCB31CDC564300C3ECB4 /* VRCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VRCamera.swift; sourceTree = "<group>"; };
 		BF48FCB71CDC5D0A00C3ECB4 /* VRScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VRScene.swift; sourceTree = "<group>"; };
 		BF48FCBC1CDC624C00C3ECB4 /* UIView+Magic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Magic.swift"; sourceTree = "<group>"; };
+		BF591B9E1CDECA9F00952D7E /* OverlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayScene.swift; sourceTree = "<group>"; };
+		BF591BA01CDF053900952D7E /* VRViewportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VRViewportView.swift; sourceTree = "<group>"; };
 		BFFA42B81CDEB538007D4EAD /* VRView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VRView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -47,6 +69,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF111C941CDF25EE00842B7C /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				BF111CA71CDF2BCA00842B7C /* bass-drum-long.mp3 */,
+				BF111CA81CDF2BCA00842B7C /* bass-drum.mp3 */,
+				BF111CA91CDF2BCA00842B7C /* cow-bell.mp3 */,
+				BF111CAA1CDF2BCA00842B7C /* crash.mp3 */,
+				BF111CAB1CDF2BCA00842B7C /* hi-hat-closed.mp3 */,
+				BF111CAC1CDF2BCA00842B7C /* hi-hat-open.mp3 */,
+				BF111CAD1CDF2BCA00842B7C /* ride.mp3 */,
+				BF111CAE1CDF2BCA00842B7C /* snare-drum-closed.mp3 */,
+				BF111CAF1CDF2BCA00842B7C /* snare-drum-open.mp3 */,
+			);
+			name = Sound;
+			sourceTree = "<group>";
+		};
 		BF48FC911CDC4EA700C3ECB4 = {
 			isa = PBXGroup;
 			children = (
@@ -69,6 +107,7 @@
 				BF48FC9D1CDC4EA700C3ECB4 /* AppDelegate.swift */,
 				BF48FCA11CDC4EA700C3ECB4 /* GameViewController.swift */,
 				BF48FCB11CDC508200C3ECB4 /* MainScene.swift */,
+				BF591B9E1CDECA9F00952D7E /* OverlayScene.swift */,
 				BF48FCB91CDC5D2400C3ECB4 /* VR */,
 				BF48FCBB1CDC624300C3ECB4 /* Magic */,
 				BF48FCBA1CDC5D2B00C3ECB4 /* Resources */,
@@ -80,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				BFFA42B81CDEB538007D4EAD /* VRView.swift */,
+				BF591BA01CDF053900952D7E /* VRViewportView.swift */,
 				BF48FCB71CDC5D0A00C3ECB4 /* VRScene.swift */,
 				BF48FCB31CDC564300C3ECB4 /* VRCamera.swift */,
 			);
@@ -89,6 +129,7 @@
 		BF48FCBA1CDC5D2B00C3ECB4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BF111C941CDF25EE00842B7C /* Sound */,
 				BF48FC9F1CDC4EA700C3ECB4 /* art.scnassets */,
 				BF48FCA61CDC4EA700C3ECB4 /* Assets.xcassets */,
 				BF48FCA31CDC4EA700C3ECB4 /* Main.storyboard */,
@@ -164,10 +205,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF111CB11CDF2BCA00842B7C /* bass-drum.mp3 in Resources */,
+				BF111CB61CDF2BCA00842B7C /* ride.mp3 in Resources */,
 				BF48FCA01CDC4EA700C3ECB4 /* art.scnassets in Resources */,
+				BF111CB41CDF2BCA00842B7C /* hi-hat-closed.mp3 in Resources */,
 				BF48FCAA1CDC4EA700C3ECB4 /* LaunchScreen.storyboard in Resources */,
 				BF48FCA71CDC4EA700C3ECB4 /* Assets.xcassets in Resources */,
+				BF111CB51CDF2BCA00842B7C /* hi-hat-open.mp3 in Resources */,
+				BF111CB71CDF2BCA00842B7C /* snare-drum-closed.mp3 in Resources */,
+				BF111CB31CDF2BCA00842B7C /* crash.mp3 in Resources */,
 				BF48FCA51CDC4EA700C3ECB4 /* Main.storyboard in Resources */,
+				BF111CB81CDF2BCA00842B7C /* snare-drum-open.mp3 in Resources */,
+				BF111CB01CDF2BCA00842B7C /* bass-drum-long.mp3 in Resources */,
+				BF111CB21CDF2BCA00842B7C /* cow-bell.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,7 +232,9 @@
 				BF48FCA21CDC4EA700C3ECB4 /* GameViewController.swift in Sources */,
 				BF48FCB81CDC5D0A00C3ECB4 /* VRScene.swift in Sources */,
 				BF48FC9E1CDC4EA700C3ECB4 /* AppDelegate.swift in Sources */,
+				BF591BA11CDF053900952D7E /* VRViewportView.swift in Sources */,
 				BF48FCBD1CDC624C00C3ECB4 /* UIView+Magic.swift in Sources */,
+				BF591B9F1CDECA9F00952D7E /* OverlayScene.swift in Sources */,
 				BF48FCB41CDC564300C3ECB4 /* VRCamera.swift in Sources */,
 				BF48FCB21CDC508200C3ECB4 /* MainScene.swift in Sources */,
 			);

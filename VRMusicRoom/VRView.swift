@@ -7,6 +7,11 @@
 //
 
 import SceneKit
+import SpriteKit
+
+enum VROverlaySceneType {
+    case None, Shared(SKScene), Separate(SKScene, SKScene)
+}
 
 class VRView: UIView, SCNSceneRendererDelegate {
     // The scene
@@ -25,15 +30,49 @@ class VRView: UIView, SCNSceneRendererDelegate {
         }
     }
     
+    // Delegates the events from the viewports to this delegate
+    weak var delegate: SCNSceneRendererDelegate?
+    
     // The views
+    var leftView: VRViewportView
+    var rightView: VRViewportView
+    
+    // The view modifiers
     override var backgroundColor: UIColor? {
         willSet(value) {
             leftView.backgroundColor = value
             rightView.backgroundColor = value
         }
     }
-    var leftView: SCNView
-    var rightView: SCNView
+    var overlaySKScene: VROverlaySceneType = .None { // Note: overlay scenes are not good for VR because they aren't centered properly with each eye
+        willSet(value) {
+            let sceneSize = CGSize(width: bounds.width / 2, height: bounds.height)
+            
+            // Assign the scene
+            switch value {
+            case .None:
+                leftView.overlaySKScene = nil
+                rightView.overlaySKScene = nil
+            case .Shared(let scene):
+                leftView.overlaySKScene = scene
+                rightView.overlaySKScene = scene
+                
+                scene.size = sceneSize
+            case .Separate(let leftScene, let rightScene):
+                leftView.overlaySKScene = leftScene
+                rightView.overlaySKScene = rightScene
+                
+                leftScene.size = sceneSize
+                rightScene.size = sceneSize
+            }
+        }
+    }
+    var antialiasingMode: SCNAntialiasingMode = .None {
+        willSet(value) {
+            leftView.antialiasingMode = antialiasingMode
+            rightView.antialiasingMode = antialiasingMode
+        }
+    }
     
     init(scene scn: VRScene, frame: CGRect, options: [String : AnyObject]? = nil) {
         // Save the scene
@@ -43,8 +82,8 @@ class VRView: UIView, SCNSceneRendererDelegate {
         vrScene.camera = VRCamera()
         
         // Create the views
-        leftView = SCNView(frame: CGRect(x: 0, y: 0, width: 1, height: 1), options: options)
-        rightView = SCNView(frame: CGRect(x: 0, y: 0, width: 1, height: 1), options: options)
+        leftView = VRViewportView(frame: CGRect(x: 0, y: 0, width: 1, height: 1), options: options)
+        rightView = VRViewportView(frame: CGRect(x: 0, y: 0, width: 1, height: 1), options: options)
         
         super.init(frame: frame)
         
@@ -69,10 +108,27 @@ class VRView: UIView, SCNSceneRendererDelegate {
             ]
         )
         forceLayout()
+        
+        // Tell the scene it's ready
+        vrScene.vrSceneReady()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        // Resize the overlay
+        let sceneSize = CGSize(width: bounds.width / 2, height: bounds.height)
+        switch overlaySKScene {
+        case .Shared(let scene):
+            scene.size = sceneSize
+        case .Separate(let leftScene, let rightScene):
+            leftScene.size = sceneSize
+            rightScene.size = sceneSize
+        default:
+            break
+        }
     }
     
     private func configureSceneView(view: SCNView, cameraSide: VRCameraSide) {
@@ -81,6 +137,9 @@ class VRView: UIView, SCNSceneRendererDelegate {
         
         // Set the delegate
         view.delegate = self
+        
+        // Make sure the scene is playing
+        view.playing = true
         
         // Set the proper camera
         switch cameraSide {
@@ -95,5 +154,28 @@ class VRView: UIView, SCNSceneRendererDelegate {
         // FIXME: This will be called twice per frame
         // Render the VR camera
         vrScene.camera.renderer(renderer, updateAtTime: time)
+        
+        // Delegate the event
+        delegate?.renderer?(renderer, updateAtTime: time)
+    }
+    
+    func renderer(renderer: SCNSceneRenderer, didApplyAnimationsAtTime time: NSTimeInterval) {
+        // Delegate the event
+        delegate?.renderer?(renderer, didApplyAnimationsAtTime: time)
+    }
+    
+    func renderer(renderer: SCNSceneRenderer, didSimulatePhysicsAtTime time: NSTimeInterval) {
+        // Delegate the event
+        delegate?.renderer?(renderer, didSimulatePhysicsAtTime: time)
+    }
+    
+    func renderer(renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: NSTimeInterval) {
+        // Delegate the event
+        delegate?.renderer?(renderer, willRenderScene: scene, atTime: time)
+    }
+    
+    func renderer(renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: NSTimeInterval) {
+        // Delegate the event
+        delegate?.renderer?(renderer, didRenderScene: scene, atTime: time)
     }
 }
