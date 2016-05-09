@@ -136,7 +136,12 @@ class VRView: UIView, SCNSceneRendererDelegate {
         view.scene = vrScene
         
         // Set the delegate
-        view.delegate = self
+        switch cameraSide { // Set delegate on only the left side so it's not called twice per frame
+        case .Left:
+            view.delegate = self
+        default:
+            break
+        }
         
         // Make sure the scene is playing
         view.playing = true
@@ -151,7 +156,6 @@ class VRView: UIView, SCNSceneRendererDelegate {
     }
     
     func renderer(renderer: SCNSceneRenderer, updateAtTime time: NSTimeInterval) {
-        // FIXME: This will be called twice per frame
         // Render the VR camera
         vrScene.camera.renderer(renderer, updateAtTime: time)
         

@@ -40,7 +40,16 @@ class MainScene: VRScene {
         "drum-left": "snare-drum-closed",
         "drum-middle-left": "snare-drum-open",
         "drum-middle-right": "snare-drum-open",
-        "drum-right": "snare-drum-open"
+        "drum-right": "snare-drum-open",
+        
+        // Timpani
+        "timpani": "timpani",
+        
+        // Trumpet
+        "trumpet": "trumpet",
+        
+        // Harp
+        "harp": "harp"
     ]
     var nodeSoundSources: [SCNNode: AVAudioPlayer] = [:]
     
@@ -97,7 +106,7 @@ class MainScene: VRScene {
                     print("No audio player for sound \(soundName)")
                 }
             } catch {
-                print("shit it didn't work")
+                print("Could not create AVAudioPlayer for sound \"\(soundName)\".")
             }
         }
         
@@ -111,13 +120,26 @@ class MainScene: VRScene {
             // Create the node
             focusNode = SCNNode(geometry: focusGeometry)
             focusNode?.renderingOrder = 1 // Draw in front of everything else
-            focusNode?.position.z = -20 // Move out in front of the camera
-            focusNodeParent?.castsShadow = false
+            focusNode?.position.z = -40 // Move out in front of the camera
+            focusNode?.castsShadow = false
             
             // Create the parent
             focusNodeParent = SCNNode() // Create the focus node's parent which contains the position and rotation
             focusNodeParent?.addChildNode(focusNode!) // Can't child under camera becaue it doesn't appear for some reason
             rootNode.addChildNode(focusNodeParent!)
+            
+            // Pin the focus parent node's transform to the camera
+            focusNodeParent?.constraints = [ camera.newCameraPinConstraint() ]
+        }
+        
+        // Pin the lights to the camera
+        do {
+            // Get the light rig node
+            let lightRig = rootNode.childNodeWithName("light rig", recursively: true)!
+            lightRig.hidden = false
+            
+            // Add the constraint
+            lightRig.constraints = [ camera.newCameraPinConstraint() ]
         }
 
         // Animate the ship rotating
@@ -131,12 +153,6 @@ class MainScene: VRScene {
     }
     
     // Called every frame
-    func updateFocusTransform() {
-        focusNodeParent?.position = camera.position
-        focusNodeParent?.rotation = camera.cameraParent.rotation
-    }
-    
-    // Called every frame
     func executeHitTest() {
         // Check if triggering
         guard triggering else {
@@ -145,8 +161,8 @@ class MainScene: VRScene {
         
         // Get the results
         let results = rootNode.hitTestWithSegmentFromPoint( // TODO: Fix this
-            camera.position,
-            toPoint: focusNode!.convertPosition(SCNVector3(), toNode: rootNode),
+            camera.convertPosition(SCNVector3(), toNode: rootNode),
+            toPoint: camera.cameraRollNode.convertPosition(SCNVector3(0, 0, -100), toNode: rootNode),
             options: nil
         )
         
@@ -158,19 +174,34 @@ class MainScene: VRScene {
         
         // Get the first result
         let result = results[0]
-        let node = result.node
         
-        // Check if it's a new node that was looked at
-        if node != previousLookedNode {
-            if let audioSource = nodeSoundSources[node] {
-                // Play the node's audio
+        // Get playerNode and player and check if it's a new looked at node
+        if let (playerNode, player) = parentNodeWithPlayer(baseNode: result.node) {
+            // Play the node's audio if it was just looked at
+            if playerNode != previousLookedNode {
 //                rootNode.runAction(SCNAction.playAudioSource(audioSource, waitForCompletion: false))
-                audioSource.currentTime = 0
-                audioSource.play()
+                player.currentTime = 0 // Go back to beginning
+                player.play()
+                
+                // Save to previous looked node
+                previousLookedNode = playerNode
             }
-            
-            // Save to previous looked node
-            previousLookedNode = node
+        } else {
+            // There was nothing looked at, reset the previousLookedNOde
+            previousLookedNode = nil
+        }
+    }
+    
+    private func parentNodeWithPlayer(baseNode node: SCNNode) -> (SCNNode, AVAudioPlayer)? {
+        if let sound = nodeSoundSources[node] {
+            // There is a sound and node, return self
+            return (node, sound)
+        } else if let parent = node.parentNode {
+            // Check the parent node
+            return parentNodeWithPlayer(baseNode: parent)
+        } else {
+            // No more parents, no node available
+            return nil
         }
     }
 }

@@ -71,9 +71,6 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     }
     
     func renderer(renderer: SCNSceneRenderer, updateAtTime time: NSTimeInterval) {
-        // Update the position of the focus indicator
-        scene?.updateFocusTransform()
-        
         // Deal with hit tests
         scene?.executeHitTest()
     }

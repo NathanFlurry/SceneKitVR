@@ -14,6 +14,7 @@ enum VRCameraSide {
 }
 
 class VRCamera: SCNNode {
+    // Determines if the camera position will be updated based on the CoreMotion update cycle or the frames
     var automaticCoreMotionUpdates: Bool = false {
         willSet(value) {
             // Check it actually changed
@@ -29,6 +30,8 @@ class VRCamera: SCNNode {
             }
         }
     }
+    
+    // The field of view of the camera
     var fieldOfView: Double = 0 {
         willSet(value) {
             cameraLeft.camera?.xFov = value
@@ -37,6 +40,8 @@ class VRCamera: SCNNode {
             cameraRight.camera?.yFov = value
         }
     }
+    
+    // How far apart the cameras are
     var separationDistance: Float = 0 {
         willSet(value) {
             cameraLeft.position.x = -value
@@ -46,7 +51,9 @@ class VRCamera: SCNNode {
     
     var cameraLeft: SCNNode
     var cameraRight: SCNNode
-    var cameraParent: SCNNode
+    var cameraRollNode: SCNNode
+    var cameraPitchNode: SCNNode
+    var cameraYawNode: SCNNode
     
     var motionManager: CMMotionManager
     
@@ -60,7 +67,9 @@ class VRCamera: SCNNode {
         cameraRight.position.x = separation
         
         // Setup transforms
-        cameraParent = SCNNode()
+        cameraRollNode = SCNNode()
+        cameraPitchNode = SCNNode()
+        cameraYawNode = SCNNode()
         
         // Setup motion manager
         motionManager = CMMotionManager()
@@ -70,9 +79,11 @@ class VRCamera: SCNNode {
         super.init()
         
         // Setup node hierarchy
-        cameraParent.addChildNode(cameraLeft)
-        cameraParent.addChildNode(cameraRight)
-        addChildNode(cameraParent)
+        cameraRollNode.addChildNode(cameraLeft)
+        cameraRollNode.addChildNode(cameraRight)
+        cameraPitchNode.addChildNode(cameraRollNode)
+        cameraYawNode.addChildNode(cameraPitchNode)
+        addChildNode(cameraYawNode)
         
         // Setup camera properties
         fieldOfView = fov
@@ -97,16 +108,15 @@ class VRCamera: SCNNode {
             }
             
             // Update the rotations
-            cameraParent.eulerAngles = SCNVector3(
-                Float(roll) + offset.x,
-                Float(currentAttitude.yaw) + offset.y,
-                Float(currentAttitude.pitch) + offset.z
-            )
+            cameraRollNode.eulerAngles.x = Float(roll) + offset.x
+            cameraPitchNode.eulerAngles.z = Float(currentAttitude.pitch) + offset.z
+            cameraYawNode.eulerAngles.y = Float(currentAttitude.yaw) + offset.y
         } else {
 //            print("There was no device motion available.")
         }
     }
     
+    // The angle offset of the camera
     private func cameraOffsetAngles() -> SCNVector3 {
         /*
          var camerasNodeAngle1: Double!              = 0.0
@@ -127,5 +137,22 @@ class VRCamera: SCNNode {
          */
  
         return SCNVector3(-M_PI / 2, 0, 0)
+    }
+    
+    // Returns a new constraint that allows one to easily pin items to the camera
+    func newCameraPinConstraint() -> SCNTransformConstraint {
+        return SCNTransformConstraint(
+            inWorldSpace: true,
+            withBlock: {
+                (node, transform) -> SCNMatrix4 in
+                return SCNMatrix4Mult(
+                    self.transform,
+                    SCNMatrix4Mult(
+                        SCNMatrix4Mult(self.cameraRollNode.transform, self.cameraPitchNode.transform),
+                        self.cameraYawNode.transform
+                    )
+                )
+            }
+        )
     }
 }
