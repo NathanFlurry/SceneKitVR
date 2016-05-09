@@ -46,7 +46,7 @@
 		BF111CAE1CDF2BCA00842B7C /* snare-drum-closed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "snare-drum-closed.mp3"; sourceTree = "<group>"; };
 		BF111CAF1CDF2BCA00842B7C /* snare-drum-open.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "snare-drum-open.mp3"; sourceTree = "<group>"; };
 		BF111CB91CDFD8A700842B7C /* SCNNode+Magic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNNode+Magic.swift"; sourceTree = "<group>"; };
-		BF48FC9A1CDC4EA700C3ECB4 /* VRMusicRoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VRMusicRoom.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF48FC9A1CDC4EA700C3ECB4 /* SceneKitVR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SceneKitVR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF48FC9D1CDC4EA700C3ECB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF48FC9F1CDC4EA700C3ECB4 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		BF48FCA11CDC4EA700C3ECB4 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 		BF48FC9B1CDC4EA700C3ECB4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BF48FC9A1CDC4EA700C3ECB4 /* VRMusicRoom.app */,
+				BF48FC9A1CDC4EA700C3ECB4 /* SceneKitVR.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -162,9 +162,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BF48FC991CDC4EA700C3ECB4 /* VRMusicRoom */ = {
+		BF48FC991CDC4EA700C3ECB4 /* SceneKitVR */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF48FCAE1CDC4EA700C3ECB4 /* Build configuration list for PBXNativeTarget "VRMusicRoom" */;
+			buildConfigurationList = BF48FCAE1CDC4EA700C3ECB4 /* Build configuration list for PBXNativeTarget "SceneKitVR" */;
 			buildPhases = (
 				BF48FC961CDC4EA700C3ECB4 /* Sources */,
 				BF48FC971CDC4EA700C3ECB4 /* Frameworks */,
@@ -174,9 +174,9 @@
 			);
 			dependencies = (
 			);
-			name = VRMusicRoom;
+			name = SceneKitVR;
 			productName = VRMusicRoom;
-			productReference = BF48FC9A1CDC4EA700C3ECB4 /* VRMusicRoom.app */;
+			productReference = BF48FC9A1CDC4EA700C3ECB4 /* SceneKitVR.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -194,7 +194,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BF48FC951CDC4EA700C3ECB4 /* Build configuration list for PBXProject "VRMusicRoom" */;
+			buildConfigurationList = BF48FC951CDC4EA700C3ECB4 /* Build configuration list for PBXProject "SceneKitVR" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -207,7 +207,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BF48FC991CDC4EA700C3ECB4 /* VRMusicRoom */,
+				BF48FC991CDC4EA700C3ECB4 /* SceneKitVR */,
 			);
 		};
 /* End PBXProject section */
@@ -369,8 +369,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = VRMusicRoom/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nathanflurry.VRMusicRoom;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nathanflurry.SceneKitVR;
+				PRODUCT_NAME = SceneKitVR;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -381,8 +381,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = VRMusicRoom/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nathanflurry.VRMusicRoom;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nathanflurry.SceneKitVR;
+				PRODUCT_NAME = SceneKitVR;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -390,7 +390,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BF48FC951CDC4EA700C3ECB4 /* Build configuration list for PBXProject "VRMusicRoom" */ = {
+		BF48FC951CDC4EA700C3ECB4 /* Build configuration list for PBXProject "SceneKitVR" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BF48FCAC1CDC4EA700C3ECB4 /* Debug */,
@@ -399,7 +399,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF48FCAE1CDC4EA700C3ECB4 /* Build configuration list for PBXNativeTarget "VRMusicRoom" */ = {
+		BF48FCAE1CDC4EA700C3ECB4 /* Build configuration list for PBXNativeTarget "SceneKitVR" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BF48FCAF1CDC4EA700C3ECB4 /* Debug */,

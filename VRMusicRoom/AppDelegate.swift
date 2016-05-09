@@ -8,6 +8,11 @@
 
 import UIKit
 
+/*
+ DISCLAIMER:
+ I do not claim credit for any of the sounds, models, or graphics in this application; only the code.
+ */
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
